@@ -1,0 +1,11 @@
+symbol,company_name,sector,current_price,start_price,return_1year_pct,volatility_pct,avg_volume,market_cap,pe_ratio
+AAPL,Apple Inc.,Technology,259.48,234.94,10.45,31.88,53723723,3813817974784,32.89
+GOOGL,Alphabet Inc.,Communication Services,338.0,203.22,66.32,31.85,36724349,4093897080832,33.43
+MSFT,Microsoft Corporation,Technology,430.29,412.02,4.43,25.48,23123455,3195174125568,26.96
+TSLA,"Tesla, Inc.",Consumer Cyclical,430.41,404.6,6.38,62.53,96700893,1615084257280,398.53
+AMZN,"Amazon.com, Inc.",Consumer Cyclical,239.3,237.68,0.68,34.76,45160898,2558168662016,34.14
+META,"Meta Platforms, Inc.",Communication Services,716.5,687.01,4.29,39.52,15696207,1812426522624,30.49
+NVDA,NVIDIA Corporation,Technology,191.13,120.04,59.23,44.16,210833366,4653442400256,47.66
+NFLX,"Netflix, Inc.",Communication Services,83.49,97.68,-14.52,32.45,41043456,354155364352,33.0
+DIS,The Walt Disney Company,Communication Services,112.8,111.82,0.87,30.19,9875788,201380593664,16.28
+KO,The Coca-Cola Company,Consumer Defensive,74.81,61.66,21.33,17.45,16845689,321957330944,24.37
