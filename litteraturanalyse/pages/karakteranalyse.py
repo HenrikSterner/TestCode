@@ -2,9 +2,26 @@ import streamlit as st
 import pandas as pd
 from collections import Counter
 import re
+from pathlib import Path
 import matplotlib.pyplot as plt
 import seaborn as sns
 import networkx as nx
+
+
+def find_book_path() -> Path:
+    script_dir = Path(__file__).resolve().parent
+    candidates = [
+        script_dir / 'frankenstein.txt',
+        script_dir.parent / 'frankenstein.txt',
+        Path.cwd() / 'frankenstein.txt',
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    return candidates[1]
+
+
+BOOK_PATH = find_book_path()
 
 st.title("👥 2. Karakteranalyse")
 
@@ -28,7 +45,7 @@ if 'tekst' not in st.session_state or 'kapitler' not in st.session_state:
     
     # Try to load the file directly
     try:
-        with open('frankenstein.txt', 'r', encoding='utf-8') as file:
+        with open(BOOK_PATH, 'r', encoding='utf-8') as file:
             tekst = file.read()
         
         kapitler = re.split(r'Chapter \d+', tekst)
@@ -40,7 +57,7 @@ if 'tekst' not in st.session_state or 'kapitler' not in st.session_state:
         st.success("✅ Bog indlæst succesfuldt!")
         
     except FileNotFoundError:
-        st.error("❌ Filen 'frankenstein.txt' blev ikke fundet.")
+        st.error(f"❌ Filen '{BOOK_PATH.name}' blev ikke fundet (forventet sti: {BOOK_PATH}).")
         uploaded_file = st.file_uploader("Upload bog (tekstfil)", type=['txt'])
         if uploaded_file is not None:
             tekst = str(uploaded_file.read(), "utf-8")

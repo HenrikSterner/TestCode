@@ -4,8 +4,25 @@ import streamlit as st
 import pandas as pd
 from collections import Counter
 import re
+from pathlib import Path
+
+
+def find_book_path() -> Path:
+    script_dir = Path(__file__).resolve().parent
+    candidates = [
+        script_dir / 'frankenstein.txt',
+        script_dir.parent / 'frankenstein.txt',
+        Path.cwd() / 'frankenstein.txt',
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    return candidates[1]
+
+
+BOOK_PATH = find_book_path()
 # indlæs tekstfil
-with open('frankenstein.txt', 'r', encoding='utf-8') as file:
+with open(BOOK_PATH, 'r', encoding='utf-8') as file:
     tekst = file.read()
 # del tekst i kapitler (antager kapitler er adskilt af "Chapter X")
 kapitler = re.split(r'Chapter \d+', tekst)
